@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta charset="utf-8" />
+        <title>H264</title>
+        <style>
+            canvas {
+                border: 1px solid;
+            }
+            
+            .newcanvas {
+                width: 1920;
+                height: 1080;
+                display: flex;
+                flex-wrap: wrap;
+
+            }
+            .newcanvas div {
+                margin-right: 5px;
+                margin-bottom: 5px;
+                display: flex;
+                -webkit-flex-dierction:column;
+                flex-direction: column;
+            }
+
+            .newcanvas div div{
+                display: flex;
+                flex-direction: row;
+            }
+
+        </style>
+	</head>
+	<body>
+
+        <div style="margin-top: 10px">
+            <div class="newcanvas">
+                <div>
+                    <canvas width="640" height="360" id="img1"></canvas>
+                    <div  style="position: absolute;">
+                        <button id='edit'>编辑</button><button id='full'>全屏</button>
+                    </div>
+
+                    <div id='edit-model' style="position: absolute; margin-top: 100px; display: flex; flex-direction: column; display: none;">
+                        <input type="" class="form-control" id="websocket" placeholder="请输入websocket地址" maxlength="64">
+                        <div  style="position: absolute; margin-top: 25px;">
+                            <button id='cancel'>取消</button><button id='commit'>确定</button>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div>
+                    <canvas width="640" height="360" id="img2"></canvas>
+                </div>
+
+                <div>
+                    <canvas width="640" height="360" id="img3"></canvas>
+                </div>
+
+                <div>
+                    <canvas width="640" height="360" id="img4"></canvas>
+                </div>
+
+                <div>
+                    <canvas width="640" height="360" id="img5"></canvas>
+                </div>
+
+                <div>
+                    <canvas width="640" height="360" id="img6"></canvas>
+                </div>
+
+                <div>
+                    <canvas width="640" height="360" id="img7"></canvas>
+                </div>
+                
+                <div>
+                    <canvas width="640" height="360" id="img8"></canvas>
+                </div>
+
+                <div>
+                    <canvas width="640" height="360" id="img9"></canvas>
+                </div>
+
+                <div>
+                    <canvas width="640" height="360" id="img10"></canvas>
+                </div>
+                
+                <div>
+                    <canvas width="640" height="360" id="img11"></canvas>
+                </div>
+
+                <div>
+                    <canvas width="640" height="360" id="img12"></canvas>
+                </div>
+
+
+                <div>
+                    <canvas width="640" height="360" id="img13"></canvas>
+                </div>
+
+                <div>
+                    <canvas width="640" height="360" id="img14"></canvas>
+                </div>
+                
+                <div>
+                    <canvas width="640" height="360" id="img15"></canvas>
+                </div>
+
+                <div>
+                    <canvas width="640" height="360" id="img16"></canvas>
+                </div>
+
+
+
+            </div>
+            <canvas id="playCanvas" width="1280" height="720" style="position: absolute; display: none;"></canvas>   
+            <canvas id="rects-canvas" width="1280" height="720" style="position: absolute; display: none;"></canvas>
+            <canvas id="lpr-canvas" width="1280" height="720" style="position: absolute; display: none;"></canvas>
+       
+            <!-- <canvas id="video-canvas" width="1280" height="720" style="position: absolute;"></canvas> -->
+            
+        </div>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/fsdraw.js"></script>
+        <script src="js/dist_3/libffmpeg_264.js"></script>
+        <script src="js/jsmpeg.js"></script>
+        <script src="js/video_1.js"></script>
+        <script src="js/webgl.js"></script>
+        <script>
+
+
+        var canvas1 = document.getElementById("img1");
+        var canvas2 = document.getElementById("img2");
+        var canvas3 = document.getElementById("img3");
+        var canvas4 = document.getElementById("img4");
+        var canvas5 = document.getElementById("img5");
+        var canvas6 = document.getElementById("img6");
+        var canvas7 = document.getElementById("img7");
+        var canvas8 = document.getElementById("img8");
+        var canvas9 = document.getElementById("img9");
+        var canvas10 = document.getElementById("img10");
+        var canvas11 = document.getElementById("img11");
+        var canvas12 = document.getElementById("img12");
+        var canvas13 = document.getElementById("img13");
+        var canvas14 = document.getElementById("img14");
+        var canvas15 = document.getElementById("img15");
+        var canvas16 = document.getElementById("img16");
+        var canvasList = [];
+        canvasList.push(canvas1);
+        canvasList.push(canvas2);
+        canvasList.push(canvas3);
+        canvasList.push(canvas4);
+        canvasList.push(canvas5);
+        canvasList.push(canvas6);
+        canvasList.push(canvas7);
+        canvasList.push(canvas8);
+        canvasList.push(canvas9);
+        canvasList.push(canvas10);
+        canvasList.push(canvas11);
+        canvasList.push(canvas12);
+        canvasList.push(canvas13);
+        canvasList.push(canvas14);
+        canvasList.push(canvas15);
+        canvasList.push(canvas16);
+
+        // decode_frame("ws://172.18.228.100:7005/h264", canvas);
+        Module.onRuntimeInitialized = function () {
+            // decode_frame("ws://172.18.228.100:7005/h264", canvas1);
+            for (let i = 0; i < 4; i++) {
+                decode_frame("ws://172.18.228.100:7005/h264", canvasList, i);
+                // decode_frame("ws://172.18.228.100:7005/h264");
+            }
+            
+            // decode_frame("ws://172.18.228.100:7005/h264", canvasList, 0);
+            // decode_frame("ws://172.18.228.100:7005/h264", canvasList, 1);
+            
+            // decode_frame("ws://172.18.228.100:7005/h264", canvasList, 1);
+
+        }
+
+        $('#full').click(function() {
+            var canvas = $(this).parent().parent().children()[0];
+            canvas.requestFullscreen()
+
+        })
+
+        $('#edit').click(function() {
+            var canvas = $(this).parent().parent().children()[0];
+            $($(this).parent().parent().children()[2]).css('display', '')
+        })
+
+        $('#cancel').click(function() {
+            $($(this).parent().parent().children()[0]).val('')
+            $($(this).parent().parent().parent().children()[2]).css('display', 'none')
+        })
+
+        $('#commit').click(function() {
+            $($(this).parent().parent().parent().children()[2]).css('display', 'none')
+            
+        })
+
+       
+        </script>
+	</body>
+</html>

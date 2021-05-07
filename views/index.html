@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta charset="utf-8" />
+        <title>Live</title>
+        <style>
+            canvas {
+                border: 1px solid;
+            }
+            
+            .newcanvas {
+                width: 1920;
+                height: 1080;
+            }
+        </style>
+	</head>
+	<body>
+        <div style="margin-top: 10px">
+           <p>h264 test</p>
+        </div>
+        <div style="margin-top: 10px">
+            <!-- <div class="newcanvas">
+                <canvas width="640" height="360" id="playCanvas"></canvas>
+                <canvas width="640" height="360" id="img2"></canvas>
+                <canvas width="640" height="360" id="img3"></canvas>
+                <canvas width="640" height="360" id="img4"></canvas>
+                <canvas width="640" height="360" id="img5"></canvas>
+                <canvas width="640" height="360" id="img6"></canvas>
+                <canvas width="640" height="360" id="img7"></canvas>
+                <canvas width="640" height="360" id="img8"></canvas>
+                <canvas width="640" height="360" id="img9"></canvas>
+            </div> -->
+            <canvas id="playCanvas" width="1280" height="720" style="position: absolute;"></canvas>   
+            <canvas id="rects-canvas" width="1280" height="720" style="position: absolute;"></canvas>
+            <canvas id="lpr-canvas" width="1280" height="720" style="position: absolute;"></canvas>
+       
+            <!-- <canvas id="video-canvas" width="1280" height="720" style="position: absolute;"></canvas> -->
+            
+        </div>
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/fsdraw.js"></script>
+        <script src="js/dist_4/libffmpeg_264.js"></script>
+        <script src="js/jsmpeg.js"></script>
+        <script src="js/video.js"></script>
+        <script src="js/webgl.js"></script>
+        <script>
+        var canvas = document.getElementById("playCanvas");
+        // var offscreen = canvas.transferControlToOffscreen();
+        var canvasList = [canvas];
+
+        Module.onRuntimeInitialized = function () {
+            decode_frame("ws://172.18.228.154:9090/school", canvasList, 0);
+            // decode_frame_worker("ws://172.18.228.154:8090/xxx", canvasList, 0)
+        }
+
+        
+        // var url = 'ws://172.18.228.125:8083';
+        // window.player1 = new JSMpeg.Player(url, {"canvas": canvas});
+
+        // var canvas = document.getElementById("playCanvas");
+
+        // var url = 'ws://172.18.228.154:8091/xxx';
+        // window.player1 = new JSMpeg.Player(url, {"canvas": canvas});
+
+        // var canvas = document.getElementById("img2");
+
+        // var url = 'ws://172.18.228.154:8091/xxx';
+        // window.player2 = new JSMpeg.Player(url, {"canvas": canvas});
+
+
+        
+        // var canvas = document.getElementById("img3");
+
+        // var url = 'ws://172.18.228.154:8091/xxx';
+        // window.player2 = new JSMpeg.Player(url, {"canvas": canvas});
+
+                
+        // var canvas = document.getElementById("img4");
+
+        // var url = 'ws://172.18.228.154:8091/xxx';
+        // window.player2 = new JSMpeg.Player(url, {"canvas": canvas});
+       
+        </script>
+	</body>
+</html>

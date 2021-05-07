@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta charset="utf-8" />
+        <title>JSMpeg</title>
+        <style>
+            canvas {
+                border: 1px solid;
+            }
+            
+            .newcanvas {
+                width: 1920;
+                height: 1080;
+                display: flex;
+                flex-wrap: wrap;
+
+            }
+            .newcanvas div {
+                margin-right: 5px;
+                margin-bottom: 5px;
+                display: flex;
+                -webkit-flex-dierction:column;
+                flex-direction: column;
+            }
+
+            .newcanvas div div{
+                display: flex;
+                flex-direction: row;
+            }
+
+        </style>
+	</head>
+	<body>
+
+        <div style="margin-top: 10px">
+            <div class="newcanvas">
+                <div>
+                    <canvas width="640" height="360" id="img1"></canvas>
+                    <div  style="position: absolute;">
+                        <!-- <p></p> -->
+                        <button>编辑</button>
+                        <button id = 'full'>全屏</button>
+                    </div>
+                   
+                </div>
+                
+                <div class="jsmpeg">
+                    <canvas width="640" height="360" id="img2"></canvas>
+                </div>
+
+                <div>
+                    <canvas width="640" height="360" id="img3"></canvas>
+                </div>
+
+                <div>
+                    <canvas width="640" height="360" id="img4"></canvas>
+                </div>
+
+                <div>
+                    <canvas width="640" height="360" id="img5"></canvas>
+                </div>
+
+                <div>
+                    <canvas width="640" height="360" id="img6"></canvas>
+                </div>
+
+                <div>
+                    <canvas width="640" height="360" id="img7"></canvas>
+                </div>
+                
+                <div>
+                    <canvas width="640" height="360" id="img8"></canvas>
+                </div>
+
+                <div>
+                    <canvas width="640" height="360" id="img9"></canvas>
+                </div>
+
+                <div>
+                    <canvas width="640" height="360" id="img10"></canvas>
+                </div>
+                
+                <div>
+                    <canvas width="640" height="360" id="img11"></canvas>
+                </div>
+
+                <div>
+                    <canvas width="640" height="360" id="img12"></canvas>
+                </div>
+
+
+                <!-- <div>
+                    <canvas width="640" height="360" id="img13"></canvas>
+                </div>
+
+                <div>
+                    <canvas width="640" height="360" id="img14"></canvas>
+                </div>
+                
+                <div>
+                    <canvas width="640" height="360" id="img15"></canvas>
+                </div>
+
+                <div>
+                    <canvas width="640" height="360" id="img16"></canvas>
+                </div> -->
+
+
+
+            </div>
+            <canvas id="playCanvas" width="1280" height="720" style="position: absolute; display: none;"></canvas>   
+            <canvas id="rects-canvas" width="1280" height="720" style="position: absolute; display: none;"></canvas>
+            <canvas id="lpr-canvas" width="1280" height="720" style="position: absolute; display: none;"></canvas>
+       
+            <!-- <canvas id="video-canvas" width="1280" height="720" style="position: absolute;"></canvas> -->
+            
+        </div>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/fsdraw.js"></script>
+        <script src="js/libffmpeg_264_1.js"></script>
+        <script src="js/jsmpeg.js"></script>
+        <script src="js/video.js"></script>
+        <script src="js/webgl.js"></script>
+        <script>
+
+        var canvas = document.getElementById("img1");
+        var url = 'ws://172.18.228.125:8083';
+        window.player1 = new JSMpeg.Player(url, {"canvas": canvas});
+
+        var canvas = document.getElementById("img2");
+        var url = 'ws://172.18.228.125:8083';
+        window.player2 = new JSMpeg.Player(url, {"canvas": canvas});
+        
+        var canvas = document.getElementById("img3");
+        var url = 'ws://172.18.228.125:8083';
+        window.player2 = new JSMpeg.Player(url, {"canvas": canvas});
+                
+        var canvas = document.getElementById("img4");
+        var url = 'ws://172.18.228.125:8083';
+        window.player2 = new JSMpeg.Player(url, {"canvas": canvas});
+
+        var canvas = document.getElementById("img5");
+        var url = 'ws://172.18.228.125:8083';
+        window.player2 = new JSMpeg.Player(url, {"canvas": canvas});
+
+        var canvas = document.getElementById("img6");
+        var url = 'ws://172.18.228.125:8083';
+        window.player2 = new JSMpeg.Player(url, {"canvas": canvas});
+                
+        var canvas = document.getElementById("img7");
+        var url = 'ws://172.18.228.125:8083';
+        window.player2 = new JSMpeg.Player(url, {"canvas": canvas});
+
+        var canvas = document.getElementById("img8");
+        var url = 'ws://172.18.228.125:8083';
+        window.player2 = new JSMpeg.Player(url, {"canvas": canvas});
+
+        var canvas = document.getElementById("img9");
+        var url = 'ws://172.18.228.125:8083';
+        window.player2 = new JSMpeg.Player(url, {"canvas": canvas});
+
+        var canvas = document.getElementById("img10");
+        var url = 'ws://172.18.228.125:8083';
+        window.player2 = new JSMpeg.Player(url, {"canvas": canvas});
+
+        var canvas = document.getElementById("img11");
+        var url = 'ws://172.18.228.125:8083';
+        window.player2 = new JSMpeg.Player(url, {"canvas": canvas});
+
+        var canvas = document.getElementById("img12");
+        var url = 'ws://172.18.228.125:8083';
+        window.player2 = new JSMpeg.Player(url, {"canvas": canvas});
+
+        // var canvas = document.getElementById("img13");
+        // var url = 'ws://172.18.228.125:8083';
+        // window.player2 = new JSMpeg.Player(url, {"canvas": canvas});
+
+        // var canvas = document.getElementById("img14");
+        // var url = 'ws://172.18.228.125:8083';
+        // window.player2 = new JSMpeg.Player(url, {"canvas": canvas});
+                
+        // var canvas = document.getElementById("img15");
+        // var url = 'ws://172.18.228.125:8083';
+        // window.player2 = new JSMpeg.Player(url, {"canvas": canvas});
+
+        // var canvas = document.getElementById("img16");
+        // var url = 'ws://172.18.228.125:8083';
+        // window.player2 = new JSMpeg.Player(url, {"canvas": canvas});
+       
+
+
+        $('#full').click(function(obj) {
+
+            var canvas = document.getElementById('img1');
+            canvas.requestFullscreen()
+            // canvas.width = '1280';
+            // canvas.height = '720';
+            // console.log('full')
+        })
+
+
+        </script>
+	</body>
+</html>

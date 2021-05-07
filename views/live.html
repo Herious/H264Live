@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta charset="utf-8" />
+		<title>Live</title>
+          <script src="js/dist_4/libffmpeg_264.js"></script>
+          <script src="js/fsdraw.js"></script>
+          <script src="js/dist_4/video.js"></script>
+          <script src="js/dist_4/webgl.js"></script>
+	</head>
+	<body>
+        <div style="margin-top: 10px">
+            <canvas id="playCanvas" width="1280" height="720"  style="position: absolute;"></canvas>
+            <canvas id="rects-canvas" width="1280" height="720" style="position: absolute;"></canvas>
+            <canvas id="lpr-canvas" width="1280" height="720" style="position: absolute;"></canvas>
+        </div>
+        <script>
+
+            // var FSPlay = {
+            //     Player: null,
+            //     module: Module
+            // }
+
+            // FSPlay.Player = function(){
+            //     var Player = function(url, module) {
+            //         this.Module = module;
+            //         this.url = url;
+            //         this.Module.onRuntimeInitialized = function(url){
+            //             decode_frame(url, this.Module);
+            //         } (this.url)
+            //     };
+
+            //     Player.prototype.setDecoder = function(type) {
+            //         this.decoderType = type;
+            //     };
+
+            //     Player.prototype.decode = function() {
+            //         this.setDecoder(0);
+            //     };
+
+            //     return Player 
+            // } ();
+
+            
+
+            // new FSPlay.Player("ws://172.18.228.100:7005/h264", Module);
+
+            // Module.onRuntimeInitialized = function () {
+            //     decode_frame("ws://172.18.228.100:7005/h264");  
+            //     // decode_frame("ws://172.18.228.154:8090/xxx");
+            //     // decode_frame("ws://172.18.228.125:8081");
+            // }
+            // decode_frame("ws://172.18.228.154:8090/xxx");
+
+
+            // WebAssembly.compile(new Uint8Array(`
+            // 00 61 73 6d  01 00 00 00  01 0c 02 60  02 7f 7f 01
+            // 7f 60 01 7f  01 7f 03 03  02 00 01 07  10 02 03 61
+            // 64 64 00 00  06 73 71 75  61 72 65 00  01 0a 13 02
+            // 08 00 20 00  20 01 6a 0f  0b 08 00 20  00 20 00 6c
+            // 0f 0b`.trim().split(/[\s\r\n]+/g).map(str => parseInt(str, 16))
+            // ))
+            // .then(module => {
+            //     const instance = new WebAssembly.Instance(module)
+            //     const { add, square } = instance.exports
+
+            //     console.log('2 + 4 =', add(2, 4))
+            //     console.log('3^2 =', square(3))
+            //     console.log('(2 + 5)^2 =', square(add(2 + 5)))
+
+            // })
+        </script>
+	</body>
+</html>
